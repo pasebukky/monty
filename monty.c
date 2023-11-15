@@ -37,9 +37,7 @@ while (fgets(line, sizeof(line), file) != NULL)
 	line_number++;
 	exec_monty(line, &stack, line_number, file);
 }
-
-/* free_stack(stack); */
 fclose(file);
-free_context();
+free_stack(stack);
 return (0);
 }

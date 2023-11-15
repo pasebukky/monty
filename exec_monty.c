@@ -19,6 +19,10 @@ size_t i = 0;
 
 /* Tokenize the line to extract opcode and argument */
 op = strtok(line, " \t\n"); /* Tokenize the line using whitespace characters */
+
+if (!op)
+	return (0);
+
 if (op[0] == '#')
 	return (0);  /* Ignore comments */
 
@@ -34,17 +38,16 @@ while (ops[i].opcode && op)
 	}
 	i++;
 }
-
+ 
 /* Error handling if no match is found */
 if (op && ops[i].opcode == NULL)
 {
 	fprintf(stderr, "L%lu: usage: push integer\n", line_number);
-	free(line);
+	/* free(line); */
 	/*free_stack(*stack); Assuming free_stack takes a double pointer */
 	fclose(file);
-	free_context();
+	/* free_context(); */
 	exit(EXIT_FAILURE);
 }
-free(line);
 return (0);
 }

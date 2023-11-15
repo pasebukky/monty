@@ -16,6 +16,8 @@ stack_t *new_node;
 if (!context.arg || !isdigit(context.arg[0]))
 {
 	fprintf(stderr, "L%u: usage: push integer\n", line_number);
+	free_stack(*stack);
+	free_context();
 	exit(EXIT_FAILURE);
 }
 
@@ -25,6 +27,8 @@ new_node = malloc(sizeof(stack_t));
 if (!new_node)
 {
 	perror("Error: malloc failed");
+	/* free_stack(*stack); */
+	/* free_context(); */
 	exit(EXIT_FAILURE);
 }
 
@@ -63,6 +67,8 @@ stack_t *current;
 if (*stack == NULL)
 {
 	fprintf(stderr, "L%u: stack empty\n", line_number);
+	/* free_stack(*stack); */
+	free_context();
 	exit(EXIT_FAILURE);
 }
 
