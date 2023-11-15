@@ -26,7 +26,7 @@ new_node = malloc(sizeof(stack_t));
 
 if (!new_node)
 {
-	perror("Error: malloc failed");
+	fprintf(stderr, "Error: malloc failed\n");
 	/* free_stack(*stack); */
 	/* free_context(); */
 	exit(EXIT_FAILURE);
