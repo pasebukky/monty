@@ -69,13 +69,13 @@ typedef struct context_s
 	char *line;
 } context_t;
 
-extern context_t context; 
+extern context_t context;
 
 
 /* Function Prototypes */
 int exec_monty(char *line, stack_t **stack, size_t line_number, FILE *file);
 void initialize_context(FILE *file, char *arg, char *line);
-void free_context();
+void free_context(void);
 void free_stack(stack_t *stack);
 void x_push(stack_t **stack, unsigned int line_number);
 void x_pall(stack_t **stack, unsigned int line_number);

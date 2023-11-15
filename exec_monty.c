@@ -1,4 +1,4 @@
-#include "monty.h" 
+#include "monty.h"
 
 /**
  * exec_monty - Executes monty instructions
@@ -38,7 +38,7 @@ while (ops[i].opcode && op)
 	}
 	i++;
 }
- 
+
 /* Error handling if no match is found */
 if (op && ops[i].opcode == NULL)
 {

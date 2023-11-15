@@ -2,16 +2,35 @@
 
 context_t context;
 
-void initialize_context(FILE *file, char *arg, char *line) 
+/**
+ * initialize_context - Initializes the context variables.
+ * @file: File pointer.
+ * @arg: Argument string.
+ * @line: Line string.
+ *
+ */
+
+void initialize_context(FILE *file, char *arg, char *line)
 {
 	context.file = file;
 	context.arg = arg;
 	context.line = line;
 }
 
-void free_context() 
+
+
+
+
+
+
+/**
+ * free_context - Frees memory allocated for context variables.
+ *
+ */
+
+void free_context(void)
 {
-if (context.file != NULL) 
+if (context.file != NULL)
 {
 	fclose(context.file);
 	context.file = NULL;
@@ -32,12 +51,18 @@ if (context.line != NULL)
 
 
 
+/**
+ * free_stack - Frees memory allocated for a stack.
+ * @stack: Pointer to the stack.
+ *
+ */
 
 void free_stack(stack_t *stack)
 {
 while (stack)
 {
 	stack_t *temp = stack;
+
 	stack = stack->next;
 	free(temp);
 }

@@ -1,5 +1,5 @@
 #include "monty.h"
- 
+
 /**
  * main - Monty bytecode interpreter
  *
