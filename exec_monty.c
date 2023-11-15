@@ -11,40 +11,37 @@
  *
  */
 
-int exec_monty(char *line, stack_t **stack, size_t line_number, FILE *file)
+int exec_monty(char *line, mstack_t **stack, size_t line_number, FILE *file)
 {
-char *op;
-instruction_t ops[] = INSTRUCTIONS_X; /* Assuming INSTRUCTIONS_X is defined */
-size_t i = 0;
+	char *op;
+	instruction_t ops[] = INSTRUCTIONS_X; /* Assuming INSTRUCTIONS_X is defined */
+	size_t i = 0;
 
-/* Tokenize the line to extract opcode and argument */
-op = strtok(line, " \t\n"); /* Tokenize the line using whitespace characters */
-if (op[0] == '#')
-	return (0);  /* Ignore comments */
+	/* Tokenize the line to extract opcode and argument */
+	op = strtok(line, " \t\n"); /* Tokenize the line using whitespace characters */
+	if (op[0] == '#')
+		return (0);  /* Ignore comments */
 
-context.arg = strtok(NULL, " \t\n");  /* Extract the argument */
+	context.arg = strtok(NULL, " \t\n");  /* Extract the argument */
 
-/* Iterate through the array of instructions to find a match */
-while (ops[i].opcode && op)
-{
-	if (strcmp(op, ops[i].opcode) == 0)
+	/* Iterate through the array of instructions to find a match */
+	while (ops[i].opcode && op)
 	{
-		ops[i].f(stack, line_number);  /* Execute the instruction */
-		return (0);
+		if (strcmp(op, ops[i].opcode) == 0)
+		{
+			ops[i].f(stack, line_number);  /* Execute the instruction */
+			return (0);
+		}
+		i++;
 	}
-	i++;
-}
 
-/* Error handling if no match is found */
-if (op && ops[i].opcode == NULL)
-{
-	fprintf(stderr, "L%lu: usage: push integer\n", line_number);
-	free(line);
-	/*free_stack(*stack); Assuming free_stack takes a double pointer */
-	fclose(file);
-	free_context();
-	exit(EXIT_FAILURE);
-}
-free(line);
-return (0);
+	/* Error handling if no match is found */
+	if (op && ops[i].opcode == NULL)
+	{
+		fprintf(stderr, "L%lu: usage: push integer\n", line_number);
+		/*free_stack(*stack); Assuming free_stack takes a double pointer */
+		fclose(file);
+		exit(EXIT_FAILURE);
+	}
+	return (0);
 }

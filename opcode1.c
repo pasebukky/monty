@@ -8,9 +8,9 @@
  *
  */
 
-void x_push(stack_t **stack, unsigned int line_number)
+void x_push(mstack_t **stack, unsigned int line_number)
 {
-stack_t *new_node;
+mstack_t *new_node;
 
 /* Check if the argument provided is a valid integer */
 if (!context.arg || !isdigit(context.arg[0]))
@@ -20,7 +20,7 @@ if (!context.arg || !isdigit(context.arg[0]))
 }
 
 /* Allocate memory for a new stack node */
-new_node = malloc(sizeof(stack_t));
+new_node = malloc(sizeof(mstack_t));
 
 if (!new_node)
 {
@@ -55,9 +55,9 @@ if (*stack)
  *
  */
 
-void x_pall(stack_t **stack, unsigned int line_number)
+void x_pall(mstack_t **stack, unsigned int line_number)
 {
-stack_t *current;
+mstack_t *current;
 
 /* Check if the stack is empty */
 if (*stack == NULL)

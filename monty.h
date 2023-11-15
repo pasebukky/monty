@@ -38,7 +38,7 @@ typedef struct stack_s
 	int n;
 	struct stack_s *prev;
 	struct stack_s *next;
-} stack_t;
+} mstack_t;
 
 /**
  * struct instruction_s - opcode and its function
@@ -51,7 +51,7 @@ typedef struct stack_s
 typedef struct instruction_s
 {
 	char *opcode;
-	void (*f)(stack_t **stack, unsigned int line_number);
+	void (*f)(mstack_t **stack, unsigned int line_number);
 } instruction_t;
 
 
@@ -69,30 +69,27 @@ typedef struct context_s
 	char *line;
 } context_t;
 
-extern context_t context; 
-
-
+extern context_t context;
 /* Function Prototypes */
-int exec_monty(char *line, stack_t **stack, size_t line_number, FILE *file);
-void initialize_context(FILE *file, char *arg, char *line);
+int exec_monty(char *line, mstack_t **stack, size_t line_number, FILE *file);
 void free_context();
-void x_push(stack_t **stack, unsigned int line_number);
-void x_pall(stack_t **stack, unsigned int line_number);
-void x_pint(stack_t **stack, unsigned int line_number);
-void x_pop(stack_t **stack, unsigned int line_number);
-void x_swap(stack_t **stack, unsigned int line_number);
-void x_add(stack_t **stack, unsigned int line_number);
-void x_nop(stack_t **stack, unsigned int line_number);
-void x_sub(stack_t **stack, unsigned int line_number);
-void x_div(stack_t **stack, unsigned int line_number);
-void x_mul(stack_t **stack, unsigned int line_number);
-void x_mod(stack_t **stack, unsigned int line_number);
-void x_pchar(stack_t **stack, unsigned int line_number);
-void x_pstr(stack_t **stack, unsigned int line_number);
-void x_rotl(stack_t **stack, unsigned int line_number);
-void x_rotr(stack_t **stack, unsigned int line_number);
-void x_queue(stack_t **stack, unsigned int line_number);
-void x_stack(stack_t **stack, unsigned int line_number);
+void x_push(mstack_t **stack, unsigned int line_number);
+void x_pall(mstack_t **stack, unsigned int line_number);
+void x_pint(mstack_t **stack, unsigned int line_number);
+void x_pop(mstack_t **stack, unsigned int line_number);
+void x_swap(mstack_t **stack, unsigned int line_number);
+void x_add(mstack_t **stack, unsigned int line_number);
+void x_nop(mstack_t **stack, unsigned int line_number);
+void x_sub(mstack_t **stack, unsigned int line_number);
+void x_div(mstack_t **stack, unsigned int line_number);
+void x_mul(mstack_t **stack, unsigned int line_number);
+void x_mod(mstack_t **stack, unsigned int line_number);
+void x_pchar(mstack_t **stack, unsigned int line_number);
+void x_pstr(mstack_t **stack, unsigned int line_number);
+void x_rotl(mstack_t **stack, unsigned int line_number);
+void x_rotr(mstack_t **stack, unsigned int line_number);
+void x_queue(mstack_t **stack, unsigned int line_number);
+void x_stack(mstack_t **stack, unsigned int line_number);
 
 
 
