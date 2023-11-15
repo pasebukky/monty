@@ -14,9 +14,7 @@
 
 #define MAX_LINE_LENGTH 1024
 
-/**
- * Macro to define all instruction_t structs with functions prefixed by "x_"
- */
+/* Macro to define all instruction_t structs with functions prefixed by "x_" */
 #define INSTRUCTIONS_X \
 	{ \
 		{"push", x_push}, \
@@ -54,14 +52,13 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-
 /**
-* main - entry point
-* @n: number..
-*
-* Description: a function that prints the alphabet
-* Return: 0 (success)
-*/
+ * struct context_s - Structure to hold context information
+ * @file: Pointer to the current file
+ * @arg: Pointer to the current argument
+ * @line: Pointer to the current line
+ *
+ */
 typedef struct context_s
 {
 	FILE *file;
