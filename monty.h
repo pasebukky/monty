@@ -6,12 +6,13 @@
 #include <limits.h>
 #include <string.h>
 #include <unistd.h>
+#include <ctype.h>
 #include <sys/types.h>
 #include <sys/wait.h>
 #include <signal.h>
 #include <fcntl.h>
 
-
+#define MAX_LINE_LENGTH 1024
 
 /**
  * Macro to define all instruction_t structs with functions prefixed by "x_"
@@ -20,21 +21,6 @@
 	{ \
 		{"push", x_push}, \
 		{"pall", x_pall}, \
-		{"pint", x_pint}, \
-		{"pop", x_pop}, \
-		{"swap", x_swap}, \
-		{"add", x_add}, \
-		{"nop", x_nop}, \
-		{"sub", x_sub}, \
-		{"div", x_div}, \
-		{"mul", x_mul}, \
-		{"mod", x_mod}, \
-		{"pchar", x_pchar}, \
-		{"pstr", x_pstr}, \
-		{"rotl", x_rotl}, \
-		{"rotr", x_rotr}, \
-		{"queue", x_queue}, \
-		{"stack", x_stack}, \
 		{NULL, NULL} \
 	}
 
@@ -49,9 +35,9 @@
  */
 typedef struct stack_s
 {
-        int n;
-        struct stack_s *prev;
-        struct stack_s *next;
+	int n;
+	struct stack_s *prev;
+	struct stack_s *next;
 } stack_t;
 
 /**
@@ -64,8 +50,8 @@ typedef struct stack_s
  */
 typedef struct instruction_s
 {
-        char *opcode;
-        void (*f)(stack_t **stack, unsigned int line_number);
+	char *opcode;
+	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
 
@@ -83,8 +69,13 @@ typedef struct context_s
 	char *line;
 } context_t;
 
+extern context_t context; 
+
+
 /* Function Prototypes */
-bool _opcode(char *str);
+int exec_monty(char *line, stack_t **stack, size_t line_number, FILE *file);
+void initialize_context(FILE *file, char *arg, char *line);
+void free_context();
 void x_push(stack_t **stack, unsigned int line_number);
 void x_pall(stack_t **stack, unsigned int line_number);
 void x_pint(stack_t **stack, unsigned int line_number);
