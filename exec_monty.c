@@ -1,4 +1,4 @@
-#include "monty.h" 
+#include "monty.h"
 
 /**
  * exec_monty - Executes monty instructions
@@ -18,7 +18,7 @@ int exec_monty(char *line, mstack_t **stack, size_t line_number, FILE *file)
 	size_t i = 0;
 
 	/* Tokenize the line to extract opcode and argument */
-	op = strtok(line, " \t\n"); /* Tokenize the line using whitespace characters */
+	op = strtok(line, " \t\n"); /* Tokenize using whitespace characters */
 	if (op[0] == '#')
 		return (0);  /* Ignore comments */
 
@@ -38,7 +38,7 @@ int exec_monty(char *line, mstack_t **stack, size_t line_number, FILE *file)
 	/* Error handling if no match is found */
 	if (op && ops[i].opcode == NULL)
 	{
-		fprintf(stderr, "L%lu: usage: push integer\n", line_number);
+		fprintf(stderr, "L%ld: unknown instruction %s\n", line_number, op);
 		/*free_stack(*stack); Assuming free_stack takes a double pointer */
 		fclose(file);
 		exit(EXIT_FAILURE);
