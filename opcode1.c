@@ -11,13 +11,32 @@
 void x_push(mstack_t **stack, unsigned int line_number)
 {
 mstack_t *new_node;
+int num;
+char *arg;
 
 /* Check if the argument provided is a valid integer */
-if (!context.arg || !isdigit(context.arg[0]))
+if (!context.arg)
 {
 	fprintf(stderr, "L%u: usage: push integer\n", line_number);
 	exit(EXIT_FAILURE);
 }
+
+arg = context.arg;
+if (*arg == '-')
+{
+	arg++;
+}
+while(*arg)
+{
+	if (!isdigit(*arg))
+	{
+		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	arg++;
+}
+
+num = atoi(context.arg);
 
 /* Allocate memory for a new stack node */
 new_node = malloc(sizeof(mstack_t));
@@ -29,7 +48,7 @@ if (!new_node)
 }
 
 /* Set the new nodes value */
-new_node->n = atoi(context.arg);
+new_node->n = num;
 new_node->prev = NULL;
 new_node->next = *stack;
 
@@ -40,8 +59,6 @@ if (*stack)
 /* Update the stack top pointer */
 *stack = new_node;
 }
-
-
 
 
 
