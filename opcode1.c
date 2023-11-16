@@ -71,6 +71,7 @@ mstack_t *current;
 /* Check if the stack is empty */
 if (*stack == NULL)
 {
+	return;
 	fprintf(stderr, "L%u: stack empty\n", line_number);
 	exit(EXIT_FAILURE);
 }
