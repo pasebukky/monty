@@ -46,14 +46,17 @@ void x_pchar(mstack_t **stack, unsigned int line_number)
 {
 mstack_t *top;
 
-top = *stack;
-
-if (top == NULL)
+if (*stack == NULL)
 {
 	fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 	free_stack(*stack);
 	exit(EXIT_FAILURE);
 }
+
+top = *stack;
+
+while (top->prev)
+	top = top->prev;
 
 if (isalpha(top->n) == 0)
 {
