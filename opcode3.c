@@ -46,7 +46,7 @@ void x_pchar(mstack_t **stack, unsigned int line_number)
 {
 mstack_t *top;
 
-if (*stack == NULL)
+if (stack == NULL || *stack == NULL)
 {
 	fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
 	free_stack(*stack);
