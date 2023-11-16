@@ -14,7 +14,6 @@ mstack_t *new_node;
 int num;
 char *arg;
 
-/* Check if the argument provided is a valid integer */
 if (!context.arg)
 {
 	fprintf(stderr, "L%u: usage: push integer\n", line_number);
@@ -22,7 +21,6 @@ if (!context.arg)
 	free_stack(*stack);
 	exit(EXIT_FAILURE);
 }
-
 arg = context.arg;
 if (*arg == '-')
 	arg++;
@@ -38,14 +36,12 @@ while (*arg)
 	arg++;
 }
 num = atoi(context.arg);
-/* Allocate memory for a new stack node */
 new_node = malloc(sizeof(mstack_t));
 if (!new_node)
 {
 	perror("Error: malloc failed");
 	exit(EXIT_FAILURE);
 }
-/* Set the new nodes value */
 new_node->n = num;
 new_node->prev = NULL;
 new_node->next = *stack;
