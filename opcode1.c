@@ -80,3 +80,31 @@ while (current)
 	current = current->next;
 }
 }
+
+
+
+/**
+* x_pop - he opcode pop removes the top element of the stack.
+* @stack: Pointer to the stack
+* @line_number: Line number in the Monty bytecode file
+*
+*/
+
+
+void x_pop(mstack_t **stack, unsigned int line_number)
+{
+mstack_t *current;
+
+if (*stack == NULL)
+{
+	fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
+	fclose(context.file);
+	/*free_stack*/
+	free(context.line);
+	exit(EXIT_FAILURE);
+
+}
+current = *stack;
+*stack = current->next;
+free(current);
+}

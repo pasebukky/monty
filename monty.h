@@ -21,6 +21,7 @@
 	{ \
 		{"push", x_push}, \
 		{"pall", x_pall}, \
+		{"pop", x_pop}, \
 		{NULL, NULL} \
 	}
 
