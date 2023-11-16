@@ -67,3 +67,27 @@ if (isalpha(top->n) == 0)
 }
 printf("%c\n", top->n);
 }
+
+
+
+
+
+/**
+ * x_pstr - Prints the string starting at the top of the stack.
+ * @stack: Pointer to the stack.
+ * @line_number: Line number in the Monty bytecode file.
+ *
+ */
+
+void x_pstr(mstack_t **stack, unsigned int line_number)
+{
+mstack_t *current;
+(void)line_number;
+
+for (current = *stack; current && current->n != 0 &&
+isalpha(current->n); current = current->next)
+{
+	putchar((char)(current->n));
+}
+putchar('\n');
+}

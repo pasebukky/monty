@@ -31,6 +31,7 @@
 		{"mul", x_mul}, \
 		{"mod", x_mod}, \
 		{"pchar", x_pchar}, \
+		{"pstr", x_pstr}, \
 		{NULL, NULL} \
 	}
 
