@@ -96,9 +96,7 @@ void x_pint(mstack_t **stack, unsigned int line_number)
 if (*stack == NULL)
 {
 	fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-	/* fclose(context.file); */
 	free_stack(*stack);
-	/* free(context.line); */
 	exit(EXIT_FAILURE);
 }
 printf("%d\n", (*stack)->n);
@@ -116,7 +114,6 @@ printf("%d\n", (*stack)->n);
 *
 */
 
-
 void x_pop(mstack_t **stack, unsigned int line_number)
 {
 mstack_t *current;
@@ -124,9 +121,7 @@ mstack_t *current;
 if (*stack == NULL)
 {
 	fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-	/* fclose(context.file); */
 	free_stack(*stack);
-	/* free(context.line); */
 	exit(EXIT_FAILURE);
 
 }
@@ -134,3 +129,34 @@ current = *stack;
 *stack = current->next;
 free(current);
 }
+
+
+
+
+
+
+/**
+ * x_swap - Swaps the top two elements of the stack.
+ * @stack: Pointer to the stack.
+ * @line_number: Line number in the Monty bytecode file.
+ *
+ */
+
+void x_swap(mstack_t **stack, unsigned int line_number)
+{
+mstack_t *temp;
+
+if (*stack == NULL || (*stack)->next == NULL)
+{
+	fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
+	/* fclose(context.file); */
+	free_stack(*stack);
+	/* free(context.line); */
+	exit(EXIT_FAILURE);
+}
+temp = (*stack)->next;
+(*stack)->next = temp->next;
+temp->next = *stack;
+*stack = temp;
+}
+

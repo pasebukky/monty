@@ -23,6 +23,7 @@
 		{"pall", x_pall}, \
 		{"pint", x_pint}, \
 		{"pop", x_pop}, \
+		{"swap", x_swap}, \
 		{NULL, NULL} \
 	}
 
