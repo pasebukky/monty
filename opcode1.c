@@ -149,9 +149,7 @@ mstack_t *temp;
 if (*stack == NULL || (*stack)->next == NULL)
 {
 	fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
-	/* fclose(context.file); */
 	free_stack(*stack);
-	/* free(context.line); */
 	exit(EXIT_FAILURE);
 }
 temp = (*stack)->next;

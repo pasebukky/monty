@@ -15,7 +15,7 @@ mstack_t *temp, *second_elem;
 if (*stack == NULL || (*stack)->next == NULL)
 {
 	fprintf(stderr, "L%d: can't mod, stack too short\n", line_number);
-	free_stack(*stack);
+/*	free_stack(*stack); */
 	exit(EXIT_FAILURE);
 }
 temp = *stack;
@@ -24,7 +24,7 @@ second_elem = temp->next;
 if (temp->n == 0)
 {
 	fprintf(stderr, "L%d: division by zero\n", line_number);
-	free_stack(*stack);
+	/*free_stack(*stack);*/
 	exit(EXIT_FAILURE);
 }
 second_elem->n = temp->n % second_elem->n;
