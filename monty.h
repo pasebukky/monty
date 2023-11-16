@@ -25,6 +25,7 @@
 		{"pop", x_pop}, \
 		{"swap", x_swap}, \
 		{"add", x_add}, \
+		{"nop", x_nop}, \
 		{NULL, NULL} \
 	}
 

@@ -14,9 +14,7 @@ mstack_t *temp;
 if (*stack == NULL || (*stack)->next == NULL)
 {
 	fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
-	/* fclose(context.file); */
 	free_stack(*stack);
-	/* free(context.line); */
 	exit(EXIT_FAILURE);
 }
 temp = *stack;
@@ -24,5 +22,20 @@ temp = *stack;
 *stack = (*stack)->next;
 (*stack)->prev = NULL;
 free(temp);
+}
+
+
+
+/**
+ * x_nop - Does nothing.
+ * @stack: Pointer to the stack.
+ * @line_number: Line number in the Monty bytecode file.
+ *
+ */
+
+void x_nop(stack_t **stack, unsigned int line_number)
+{
+(void)stack;
+(void)line_number;
 }
 
