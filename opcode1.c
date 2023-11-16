@@ -96,9 +96,9 @@ void x_pint(mstack_t **stack, unsigned int line_number)
 if (*stack == NULL)
 {
 	fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
-	fclose(context.file);
+	/* fclose(context.file); */
 	free_stack(*stack);
-	free(context.line);
+	/* free(context.line); */
 	exit(EXIT_FAILURE);
 }
 printf("%d\n", (*stack)->n);
@@ -124,9 +124,9 @@ mstack_t *current;
 if (*stack == NULL)
 {
 	fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
-	fclose(context.file);
+	/* fclose(context.file); */
 	free_stack(*stack);
-	free(context.line);
+	/* free(context.line); */
 	exit(EXIT_FAILURE);
 
 }
