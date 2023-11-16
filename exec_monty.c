@@ -39,7 +39,8 @@ int exec_monty(char *line, mstack_t **stack, size_t line_number, FILE *file)
 	if (op && ops[i].opcode == NULL)
 	{
 		fprintf(stderr, "L%ld: unknown instruction %s\n", line_number, op);
-		/*free_stack(*stack); Assuming free_stack takes a double pointer */
+		free(line);
+		free_stack(*stack);
 		fclose(file);
 		exit(EXIT_FAILURE);
 	}

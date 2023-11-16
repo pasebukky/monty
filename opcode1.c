@@ -18,6 +18,8 @@ char *arg;
 if (!context.arg)
 {
 	fprintf(stderr, "L%u: usage: push integer\n", line_number);
+	free(context.line);
+	free_stack(*stack);
 	exit(EXIT_FAILURE);
 }
 
@@ -29,6 +31,8 @@ while (*arg)
 	if (!isdigit(*arg))
 	{
 		fprintf(stderr, "L%u: usage: push integer\n", line_number);
+		free(context.line);
+		free_stack(*stack);
 		exit(EXIT_FAILURE);
 	}
 	arg++;
@@ -99,7 +103,7 @@ if (*stack == NULL)
 {
 	fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 	fclose(context.file);
-	/*free_stack*/
+	free_stack(*stack);
 	free(context.line);
 	exit(EXIT_FAILURE);
 

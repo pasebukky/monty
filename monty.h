@@ -92,6 +92,8 @@ void x_rotr(mstack_t **stack, unsigned int line_number);
 void x_queue(mstack_t **stack, unsigned int line_number);
 void x_stack(mstack_t **stack, unsigned int line_number);
 
+/* util.c */
+void free_stack(mstack_t *stack);
 
 
 
