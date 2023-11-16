@@ -93,8 +93,6 @@ while (current)
 
 void x_pint(mstack_t **stack, unsigned int line_number)
 {
-mstack_t *temp;
-
 if (*stack == NULL)
 {
 	fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
@@ -103,13 +101,7 @@ if (*stack == NULL)
 	free(context.line);
 	exit(EXIT_FAILURE);
 }
-
 printf("%d\n", (*stack)->n);
-
-/* Remove the printed element from the stack */
-temp = *stack;
-*stack = (*stack)->next;
-free(temp);
 }
 
 
