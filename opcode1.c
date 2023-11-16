@@ -23,10 +23,8 @@ if (!context.arg)
 
 arg = context.arg;
 if (*arg == '-')
-{
 	arg++;
-}
-while(*arg)
+while (*arg)
 {
 	if (!isdigit(*arg))
 	{
@@ -35,27 +33,21 @@ while(*arg)
 	}
 	arg++;
 }
-
 num = atoi(context.arg);
-
 /* Allocate memory for a new stack node */
 new_node = malloc(sizeof(mstack_t));
-
 if (!new_node)
 {
 	perror("Error: malloc failed");
 	exit(EXIT_FAILURE);
 }
-
 /* Set the new nodes value */
 new_node->n = num;
 new_node->prev = NULL;
 new_node->next = *stack;
-
 /* Update previous pointer of the existing stack top */
 if (*stack)
 	(*stack)->prev = new_node;
-
 /* Update the stack top pointer */
 *stack = new_node;
 }
