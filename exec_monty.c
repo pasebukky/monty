@@ -19,7 +19,7 @@ int exec_monty(char *line, mstack_t **stack, size_t line_number, FILE *file)
 
 	/* Tokenize the line to extract opcode and argument */
 	op = strtok(line, " \t\n"); /* Tokenize using whitespace characters */
-	if (op && op[0] == '#')
+	if (op == NULL || (op && op[0] == '#'))
 		return (0);  /* Ignore comments */
 
 	context.arg = strtok(NULL, " \t\n");  /* Extract the argument */
