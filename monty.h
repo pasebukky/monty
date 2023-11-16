@@ -30,6 +30,7 @@
 		{"div", x_div}, \
 		{"mul", x_mul}, \
 		{"mod", x_mod}, \
+		{"pchar", x_pchar}, \
 		{NULL, NULL} \
 	}
 
@@ -79,6 +80,9 @@ typedef struct context_s
 } context_t;
 
 extern context_t context;
+
+
+
 /* Function Prototypes */
 int exec_monty(char *line, mstack_t **stack, size_t line_number, FILE *file);
 void free_context();
@@ -99,6 +103,8 @@ void x_rotl(mstack_t **stack, unsigned int line_number);
 void x_rotr(mstack_t **stack, unsigned int line_number);
 void x_queue(mstack_t **stack, unsigned int line_number);
 void x_stack(mstack_t **stack, unsigned int line_number);
+
+
 
 /* util.c */
 void free_stack(mstack_t *stack);

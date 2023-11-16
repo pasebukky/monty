@@ -33,3 +33,34 @@ second_elem->n %= temp->n;
 free(temp);
 }
 
+
+
+/**
+ * x_pchar - Prints the char at the top of the stack.
+ * @stack: Pointer to the stack.
+ * @line_number: Line number in the Monty bytecode file.
+ *
+ */
+
+void x_pchar(mstack_t **stack, unsigned int line_number)
+{
+mstack_t *top;
+
+top = *stack;
+
+if (top == NULL)
+{
+	fprintf(stderr, "L%d: can't pchar, stack empty\n", line_number);
+	free_stack(*stack);
+	exit(EXIT_FAILURE);
+}
+
+if (isalpha(top->n) == 0)
+{
+	fprintf(stderr, "L%d: can't pchar, value not an alphabetic character\n",
+	line_number);
+	free_stack(*stack);
+	exit(EXIT_FAILURE);
+}
+printf("%c\n", top->n);
+}
