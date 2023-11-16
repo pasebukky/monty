@@ -84,6 +84,40 @@ while (current)
 
 
 /**
+ * x_pint - Prints the value at the top of the stack, followed by a new line.
+ *
+ * @stack: A pointer to the stack.
+ * @line_number: The line number where the pint opcode is encountered.
+ *
+ */
+
+void x_pint(mstack_t **stack, unsigned int line_number)
+{
+mstack_t *temp;
+
+if (*stack == NULL)
+{
+	fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
+	fclose(context.file);
+	free_stack(*stack);
+	free(context.line);
+	exit(EXIT_FAILURE);
+}
+
+printf("%d\n", (*stack)->n);
+
+/* Remove the printed element from the stack */
+temp = *stack;
+*stack = (*stack)->next;
+free(temp);
+}
+
+
+
+
+
+
+/**
 * x_pop - he opcode pop removes the top element of the stack.
 * @stack: Pointer to the stack
 * @line_number: Line number in the Monty bytecode file
