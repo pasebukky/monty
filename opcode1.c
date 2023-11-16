@@ -67,18 +67,13 @@ if (*stack)
 void x_pall(mstack_t **stack, unsigned int line_number)
 {
 mstack_t *current;
-
-/* Check if the stack is empty */
-if (*stack == NULL)
-{
-	return;
-	fprintf(stderr, "L%u: stack empty\n", line_number);
-	exit(EXIT_FAILURE);
-}
+(void)line_number;
 
 /* Traverse the stack and print each element */
 current = *stack;
 
+if (current == NULL)
+	return;
 while (current)
 {
 	printf("%d\n", current->n);
