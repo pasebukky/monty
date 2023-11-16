@@ -15,7 +15,7 @@ context_t context = {NULL, NULL, NULL};
 int main(int argc, char *argv[])
 {
 	FILE *file;
-	char *line;
+	char *line = NULL;
 	size_t line_number = 0, size = 0;
 	ssize_t chars_read = 0;
 	mstack_t *stack = NULL;
@@ -39,7 +39,8 @@ int main(int argc, char *argv[])
 	{
 		chars_read = getline(&line, &size, file);
 		line_number++;
-		if (chars_read > 0)
+		/*printf("%d\n", (int)chars_read);*/
+		if (chars_read > 1)
 			exec_monty(line, &stack, line_number, file);
 	}
 
