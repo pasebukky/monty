@@ -15,9 +15,9 @@ context_t context = {NULL, NULL, NULL};
 int main(int argc, char *argv[])
 {
 	FILE *file;
-	char *line = NULL;
+	char *line;
 	size_t line_number = 0, size = 0;
-	ssize_t chars_read = 0;
+	ssize_t chars_read = 1;
 	mstack_t *stack = NULL;
 
 	if (argc != 2)
@@ -35,13 +35,15 @@ int main(int argc, char *argv[])
 	}
 
 
-	while (chars_read != -1)
+	while (chars_read > 0)
 	{
+		line = NULL;
 		chars_read = getline(&line, &size, file);
+		context.line = line;
 		line_number++;
-		/*printf("%d\n", (int)chars_read);*/
-		if (chars_read > 1)
+		if (chars_read > 0)
 			exec_monty(line, &stack, line_number, file);
+		free(line);
 	}
 
 	/* free_stack(stack); */
