@@ -29,6 +29,7 @@
 		{"sub", x_sub}, \
 		{"div", x_div}, \
 		{"mul", x_mul}, \
+		{"mod", x_mod}, \
 		{NULL, NULL} \
 	}
 
