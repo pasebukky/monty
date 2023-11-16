@@ -100,6 +100,37 @@ free(temp);
 
 
 
+/**
+ * x_mul - Multiplies the second top element of the stack with the top element.
+ * @stack: Pointer to the stack.
+ * @line_number: Line number in the Monty bytecode file.
+ *
+ */
+
+void x_mul(mstack_t **stack, unsigned int line_number)
+{
+mstack_t *temp;
+
+if (*stack == NULL || (*stack)->next == NULL)
+{
+	fprintf(stderr, "L%d: can't mul, stack too short\n", line_number);
+	free_stack(*stack);
+	exit(EXIT_FAILURE);
+}
+
+temp = *stack;
+
+if (temp->n == 0)
+{
+	fprintf(stderr, "L%d: multiplication by zero\n", line_number);
+	free_stack(*stack);
+	exit(EXIT_FAILURE);
+}
+(*stack)->next->n *= temp->n;
+*stack = temp->next;
+free(temp);
+}
+
 
 
 

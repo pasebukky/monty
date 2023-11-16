@@ -28,6 +28,7 @@
 		{"nop", x_nop}, \
 		{"sub", x_sub}, \
 		{"div", x_div}, \
+		{"mul", x_mul}, \
 		{NULL, NULL} \
 	}
 
