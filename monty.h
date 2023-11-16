@@ -26,6 +26,7 @@
 		{"swap", x_swap}, \
 		{"add", x_add}, \
 		{"nop", x_nop}, \
+		{"sub", x_sub}, \
 		{NULL, NULL} \
 	}
 
