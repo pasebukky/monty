@@ -27,6 +27,7 @@
 		{"add", x_add}, \
 		{"nop", x_nop}, \
 		{"sub", x_sub}, \
+		{"div", x_div}, \
 		{NULL, NULL} \
 	}
 
