@@ -32,6 +32,7 @@
 		{"mod", x_mod}, \
 		{"pchar", x_pchar}, \
 		{"pstr", x_pstr}, \
+		{"rotl", x_rotl}, \
 		{NULL, NULL} \
 	}
 
