@@ -143,9 +143,44 @@ void x_rotl(mstack_t **stack, unsigned int line_number)
 }
 
 
+/**
+* x_rotr - a function that implement the rotr opcode.
+* @stack: Pointer to the stack.
+* @line_number: Line number in the Monty bytecode file.
+*
+* Description: The opcode rotr rotates the stack to the bottom.
+*/
 
+void x_rotr(mstack_t **stack, unsigned int line_number)
+{
+	mstack_t *right;
+	mstack_t *prev;
 
+	(void) line_number;
 
+	/**
+	* Error handling:
+	* if stack is empty or there's only one element int the stack
+	* return early
+	*/
+	if (!*stack || !(*stack)->next)
+		return;
+
+	/* right now pointhe head of the stack */
+
+	right = *stack;
+
+	/* Move the right pointer to the rightmost node */
+	while (right->next)
+		right = right->next;
+
+	prev = right->prev;
+	right->next = *stack;
+	right->prev = NULL;
+	prev->next = NULL;
+	(*stack)->prev = right;
+	*stack = right;
+}
 
 
 

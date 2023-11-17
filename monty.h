@@ -33,6 +33,7 @@
 		{"pchar", x_pchar}, \
 		{"pstr", x_pstr}, \
 		{"rotl", x_rotl}, \
+		{"rotr", x_rotr}, \
 		{NULL, NULL} \
 	}
 
