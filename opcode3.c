@@ -91,3 +91,80 @@ isalpha(current->n); current = current->next)
 }
 putchar('\n');
 }
+
+
+
+/**
+* x_rotl - a function that implements the rotl opcode.
+* @stack: Pointer to the stack.
+* @line_number: Line number in the Monty bytecode file.
+*
+* Description: The opcode rotl rotates the stack to the top.
+*/
+
+void x_rotl(mstack_t **stack, unsigned int line_number)
+{
+	mstack_t *left;
+	mstack_t *right;
+
+	(void) line_number;
+
+	/**
+	 * Error handling:
+	 * if stack is empty or there's only one element int the stack
+	 * return early
+	 */
+	if (!*stack || !(*stack)->next)
+		return;
+
+	/**
+	 * left and right are two pointers to stacks that now point to
+	 * the head of the stack
+	 */
+	left = right = *stack;
+
+	/* Move the right pointer to the rightmost node */
+	while (right->next)
+		right = right->next;
+
+	/* create a circular linked list */
+	right->next = left;
+	left->prev = right;
+
+	/**
+	 * move stack head to point to the second node effectively
+	 * begining the rotation
+	 */
+	*stack = left->next;
+
+	/* bread the circular linked list */
+	(*stack)->prev->next = NULL;
+	(*stack)->prev = NULL;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
