@@ -1,9 +1,8 @@
 This directory contains all the solutions to the ALX group project 0x19. C - Stacks, Queues - LIFO, FIFO
 
-## Contributors ##
-Nuru Ahmed
-Pase Bukky
-
+## **Contributors**
+- [Bukky Pase](https://github.com/pasebukky)
+- [Nurudeen Ahmed](https://x.com/0xNuru)
 
 The tasks are as follows:
 ### Task 0 ###
